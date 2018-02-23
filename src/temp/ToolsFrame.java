@@ -60,7 +60,6 @@ public class ToolsFrame extends JFrame {
 		jf.pack();
 		jf.setLocation(0, 0);
 		jf.setSize(1000, 1000);
-		// jf.setVisible(true);
 
 		jf.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
@@ -70,8 +69,4 @@ public class ToolsFrame extends JFrame {
 		return 0;
 	}
 
-	public static void main(String[] args) {
-		ToolsFrame f = new ToolsFrame();
-		f.setVisible(true);
-	}
 }

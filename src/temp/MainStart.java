@@ -3,7 +3,9 @@ package temp;
 public class MainStart {
 
 	public static void main(String[] args) {
-		new ToolsFrame();
+
+		ToolsFrame f = new ToolsFrame();
+		f.setVisible(true);
 	}
 
 }
