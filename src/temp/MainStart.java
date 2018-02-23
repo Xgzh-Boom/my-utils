@@ -6,6 +6,7 @@ public class MainStart {
 
 		ToolsFrame f = new ToolsFrame();
 		f.setVisible(true);
+		System.out.println("aaaaaa");
 	}
 
 }
