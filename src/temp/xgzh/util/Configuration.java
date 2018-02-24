@@ -8,19 +8,14 @@ import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
 public class Configuration {
-	public static void main(String[] args) {
-		getConfigure();
-	}
 
+	public static Configuration db_config = null;
 	private String url;
 	private String driver;
 	private String username;
 	private String password;
 
-	public Configuration() {
-	}
-
-	public Configuration(String url, String driver, String username, String password) {
+	private Configuration(String url, String driver, String username, String password) {
 		super();
 		this.url = url;
 		this.driver = driver;
@@ -28,35 +23,47 @@ public class Configuration {
 		this.password = password;
 	}
 
+	/**
+	 * 获取 对象 Configuration
+	 * 
+	 * @return
+	 */
 	public static Configuration getConfigure() {
 
-		try {
-			InputStream in = Configuration.class.getResourceAsStream("db.xml");
-			if (in != null) {
-				return load(in);
+		if (Configuration.db_config == null) {
+			try {
+				InputStream in = Configuration.class.getResourceAsStream("db.xml");
+				if (in != null) {
+
+					Configuration.db_config = load(in);
+				}
+			} catch (DocumentException e) {
+				e.printStackTrace();
+				return null;
 			}
-			return null;
-		} catch (DocumentException e) {
-			e.printStackTrace();
-			return null;
 		}
+		return Configuration.db_config;
 
 	}
 
 	private static Configuration load(InputStream in) throws DocumentException {
+
 		SAXReader reader = new SAXReader();
 		Document doc = reader.read(in);
-		Element jdbc = doc.getRootElement();
-		String url = jdbc.element(IDS.URL).getText();
-		String driver = jdbc.element(IDS.DRIVER).getText();
-		String username = jdbc.element(IDS.USERNAME).getText();
-		String password = jdbc.element(IDS.PASSWORD).getText();
+		Element datas = doc.getRootElement();
+		String url = datas.element(IDS.URL).getText();
+		String driver = datas.element(IDS.DRIVER).getText();
+		String username = datas.element(IDS.USERNAME).getText();
+		String password = datas.element(IDS.PASSWORD).getText();
+		System.out.println("------------------------");
 		System.out.println(url);
 		System.out.println(driver);
 		System.out.println(username);
 		System.out.println(password);
-		Configuration cfg = new Configuration(url, driver, username, password);
-		return cfg;
+		System.out.println("------------------------");
+		Configuration.db_config = new Configuration(url, driver, username, password);
+		return Configuration.db_config;
+
 	}
 
 	public String getUrl() {

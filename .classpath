@@ -4,5 +4,6 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="lib" path="lib/db-connect/mysql-connector-java-5.1.45-bin.jar"/>
 	<classpathentry kind="lib" path="lib/xml/dom4j-2.0.2.jar"/>
+	<classpathentry kind="lib" path="lib/mybatis-3.4.5.jar" sourcepath="D:/TOOLS/DEVELOPERMENT-TOOLS/JAVA-source/mybatis/3.4.5/source-code/mybatis-3-mybatis-3.4.5.zip"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
